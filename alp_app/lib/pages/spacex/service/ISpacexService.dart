@@ -8,16 +8,17 @@ abstract class ISpacexService {
 
   final String getSpacex = ISpacexServicePath.GET.rawValue;
 
-  Future<SpacexModel?> getSpacexLaunchingInfo();
+  Future<List<SpacexModel>?> getSpacexLaunchingInfo();
 }
 
+// ignore: constant_identifier_names
 enum ISpacexServicePath { GET }
 
 extension ISpacexServicePathExtension on ISpacexServicePath {
   String get rawValue {
     switch (this) {
       case ISpacexServicePath.GET:
-        return '/launches';
+        return '/launches/';
     }
   }
 }

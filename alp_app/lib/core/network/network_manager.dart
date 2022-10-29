@@ -13,7 +13,7 @@ class NetworkManager {
     return _instance!;
   }
 
-  final String _baseUrl = ': https://api.spacexdata.com/v4';
+  final String _baseUrl = 'https://api.spacexdata.com/v4';
   late final Dio dio;
 
   NetworkManager._init() {

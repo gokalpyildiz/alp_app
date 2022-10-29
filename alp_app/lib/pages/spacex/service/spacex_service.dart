@@ -3,19 +3,21 @@ import 'package:alp_app/pages/spacex/service/ISpacexService.dart';
 import 'package:dio/dio.dart';
 
 class SpacexService extends ISpacexService {
-  //SpacexService(Dio dio) : super(dio);
-
   @override
-  Future<SpacexModel?> getSpacexLaunchingInfo() async {
+  Future<List<SpacexModel>> getSpacexLaunchingInfo() async {
     Response? response;
+    List<SpacexModel> launchList = [];
     try {
       response = await dio.get(getSpacex);
     } on DioError catch (e) {
       response = e.response;
-      return null;
+
+      return <SpacexModel>[];
     }
-    var data = response.data as Map<String, dynamic>;
-    var spacexInfo = SpacexModel.fromJson(data['data'] as Map<String, dynamic>);
-    return spacexInfo;
+    if (response.data != null) {
+      launchList = [for (var item in response.data) SpacexModel.fromJson(item as Map<String, dynamic>)];
+      return launchList;
+    }
+    return <SpacexModel>[];
   }
 }

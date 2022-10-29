@@ -1,8 +1,11 @@
-import 'package:alp_app/pages/spacex/view/spacex_page.dart';
 import 'package:flutter/material.dart';
+
+import 'app/app_dependency_injection.dart';
+import 'pages/spacex/view/spacex_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setupGetItLocators();
   runApp(const MyApp());
 }
 

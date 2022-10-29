@@ -1,16 +1,17 @@
-import 'package:alp_app/app/app_dependency_injection.dart';
-import 'package:alp_app/pages/spacex/model/spacex_model.dart';
-import 'package:alp_app/pages/spacex/service/spacex_service.dart';
+import '../../../app/app_dependency_injection.dart';
+import '../model/spacex_model.dart';
+import '../service/spacex_service.dart';
 
 class SpacexViewModel {
   final _spacexService = locator<SpacexService>();
 
-  late SpacexModel currentLaunching;
+  var launching = <SpacexModel>[];
   Future<void> fetchLaunchingInfo() async {
     try {
-      currentLaunching = await _spacexService.getSpacexLaunchingInfo() ?? SpacexModel();
+      launching = await _spacexService.getSpacexLaunchingInfo();
     } catch (e) {
-      currentLaunching = SpacexModel();
+      print('hata');
+      launching = <SpacexModel>[];
     }
   }
 }
