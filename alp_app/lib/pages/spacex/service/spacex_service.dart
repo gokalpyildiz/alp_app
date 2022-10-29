@@ -3,10 +3,10 @@ import 'package:alp_app/pages/spacex/service/ISpacexService.dart';
 import 'package:dio/dio.dart';
 
 class SpacexService extends ISpacexService {
-  SpacexService(Dio dio) : super(dio);
+  //SpacexService(Dio dio) : super(dio);
 
   @override
-  Future<SpacexModel?> getSpacexInfo() async {
+  Future<SpacexModel?> getSpacexLaunchingInfo() async {
     Response? response;
     try {
       response = await dio.get(getSpacex);

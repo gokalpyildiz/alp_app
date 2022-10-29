@@ -1,14 +1,14 @@
+import 'package:alp_app/core/network/network_manager.dart';
 import 'package:alp_app/pages/spacex/model/spacex_model.dart';
 import 'package:dio/dio.dart';
 
 abstract class ISpacexService {
-  final Dio dio;
-
-  ISpacexService(this.dio);
+  final networkManager = NetworkManager.instance;
+  Dio get dio => networkManager.dio;
 
   final String getSpacex = ISpacexServicePath.GET.rawValue;
 
-  Future<SpacexModel?> getSpacexInfo();
+  Future<SpacexModel?> getSpacexLaunchingInfo();
 }
 
 enum ISpacexServicePath { GET }
