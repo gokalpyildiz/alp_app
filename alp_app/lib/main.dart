@@ -1,4 +1,7 @@
+import 'package:alp_app/pages/spacex/bloc/spacex_bloc.dart';
+import 'package:alp_app/pages/spacex/bloc/spacex_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app/app_dependency_injection.dart';
 import 'pages/spacex/view/spacex_page.dart';
@@ -14,9 +17,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SpacexPage(),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) => SpacexBloc(),
+          )
+        ], child: const SpacexPage()));
   }
 }

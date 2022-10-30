@@ -7,4 +7,6 @@ abstract class SpacexState extends Equatable {
 
 class SpacexInitialState extends SpacexState {}
 
-class SpacexPageLoadComplete extends SpacexState {}
+class SpacexPageLoadCompleteState extends SpacexState {}
+
+class SpacexPageRefreshState extends SpacexState {}
