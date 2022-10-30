@@ -1,3 +1,4 @@
+import 'package:alp_app/pages/home_base/view/home_base_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => SpacexBloc(),
           )
-        ], child: const SpacexPage()));
+        ], child: HomeBasePage(pageIndex: 0)));
   }
 }

@@ -30,5 +30,5 @@ class SpacexViewModel {
   }
 
   var a = 0;
-  SpacexModel get lastLaunch => launching.last;
+  SpacexModel get lastLaunch => launching.first;
 }
