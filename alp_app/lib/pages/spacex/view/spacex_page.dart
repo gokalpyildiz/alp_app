@@ -1,3 +1,4 @@
+import 'package:alp_app/pages/spacex/model/spacex_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,6 +20,7 @@ class SpacexPage extends StatefulWidget {
 
 class _SpacexPageState extends State<SpacexPage> {
   late SpacexViewModel spacexViewModel;
+  var imageHeight = 250.0;
   @override
   void initState() {
     spacexViewModel = SpacexViewModel();
@@ -59,39 +61,10 @@ class _SpacexPageState extends State<SpacexPage> {
                       padding: context.paddingMediumAll,
                       child: Column(
                         children: [
-                          const NationText(
-                            'SpaceX Last Launch Info',
-                            color: Colors.black,
-                            fontSize: 25,
-                          ),
-                          NationText(('Name: ' + (lastLaunch.name ?? ''))),
-                          Padding(
-                            padding: context.paddingMediumAll,
-                            child: (lastLaunch.links != null && lastLaunch.links?.patch != null && lastLaunch.links?.patch?.large != null) == true
-                                ? Image.network(
-                                    lastLaunch.links!.patch!.large!,
-                                    height: 250,
-                                    errorBuilder: (BuildContext context, Object exception, stackTrace) => const Center(
-                                      child: NationText(
-                                        'Image not found',
-                                      ),
-                                    ),
-                                    loadingBuilder: (BuildContext context, Widget child, loadingProgress) {
-                                      if (loadingProgress == null) return child;
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          value: loadingProgress.expectedTotalBytes != null
-                                              ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                              : null,
-                                        ),
-                                      );
-                                    },
-                                  )
-                                : SvgPicture.asset(SVGImagePath.instance.imageNotFoundSVG),
-                          ),
-                          (lastLaunch.details != null) == true
-                              ? NationText('Details: ' + (lastLaunch.details ?? ''), fontSize: 18)
-                              : const NationText('Details info not found')
+                          _title(),
+                          _rocketName(lastLaunch),
+                          _rocketImage(context, lastLaunch),
+                          _detailInfo(lastLaunch),
                         ],
                       ),
                     ),
@@ -103,5 +76,60 @@ class _SpacexPageState extends State<SpacexPage> {
         )),
       ),
     );
+  }
+
+  Widget _title() {
+    return const NationText(
+      'SpaceX Last Launch Info',
+      color: Colors.black,
+      fontSize: 25,
+    );
+  }
+
+  Widget _rocketName(SpacexModel lastLaunch) => NationText(((lastLaunch.name ?? '')));
+
+  Widget _rocketImage(BuildContext context, SpacexModel lastLaunch) {
+    return Padding(
+      padding: context.paddingMediumAll,
+      child: (lastLaunch.links != null && lastLaunch.links?.patch != null && lastLaunch.links?.patch?.large != null) == true
+          ? Image.network(
+              lastLaunch.links!.patch!.large!,
+              height: imageHeight,
+              errorBuilder: (BuildContext context, Object exception, stackTrace) => const Center(
+                child: NationText(
+                  'Image not found',
+                ),
+              ),
+              loadingBuilder: (BuildContext context, Widget child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return SizedBox(
+                  height: imageHeight,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  ),
+                );
+              },
+            )
+          : SvgPicture.asset(SVGImagePath.instance.imageNotFoundSVG),
+    );
+  }
+
+  Widget _detailInfo(SpacexModel lastLaunch) {
+    //return (lastLaunch.details != null) == true ? NationText((lastLaunch.details ?? ''), fontSize: 18) : const NationText('Details info not found');
+    return Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.black.withOpacity(0.2)), borderRadius: context.lowBorderRadius),
+        child: (lastLaunch.details != null) == true
+            ? Padding(
+                padding: context.paddingLowAll,
+                child: NationText((lastLaunch.details ?? ''), fontSize: 18),
+              )
+            : Padding(
+                padding: context.paddingLowAll,
+                child: const NationText('Details info not found'),
+              ));
   }
 }
