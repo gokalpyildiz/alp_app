@@ -1,9 +1,8 @@
-import 'package:alp_app/pages/spacex/bloc/spacex_bloc.dart';
-import 'package:alp_app/pages/spacex/bloc/spacex_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app/app_dependency_injection.dart';
+import 'pages/spacex/bloc/spacex_bloc.dart';
 import 'pages/spacex/view/spacex_page.dart';
 
 void main() {

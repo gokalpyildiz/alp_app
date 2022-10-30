@@ -1,9 +1,8 @@
-import 'package:alp_app/pages/spacex/bloc/spacex_bloc.dart';
-import 'package:alp_app/pages/spacex/bloc/spacex_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/app_dependency_injection.dart';
+import '../bloc/spacex_bloc.dart';
 import '../bloc/spacex_event.dart';
 import '../model/spacex_model.dart';
 import '../service/spacex_service.dart';

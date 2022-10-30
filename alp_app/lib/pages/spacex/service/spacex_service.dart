@@ -1,5 +1,5 @@
-import 'package:alp_app/pages/spacex/model/spacex_model.dart';
-import 'package:alp_app/pages/spacex/service/ISpacexService.dart';
+import '../model/spacex_model.dart';
+import 'ISpacexService.dart';
 import 'package:dio/dio.dart';
 
 class SpacexService extends ISpacexService {

@@ -1,4 +1,4 @@
-import 'package:alp_app/extensions/string_extension.dart';
+import '../../../../extensions/string_extension.dart';
 
 class SVGImagePath {
   SVGImagePath._init();

@@ -1,6 +1,7 @@
-import 'package:alp_app/core/network/network_manager.dart';
-import 'package:alp_app/pages/spacex/model/spacex_model.dart';
 import 'package:dio/dio.dart';
+
+import '../../../core/network/network_manager.dart';
+import '../model/spacex_model.dart';
 
 abstract class ISpacexService {
   final networkManager = NetworkManager.instance;

@@ -1,5 +1,5 @@
-import 'package:alp_app/core/model/base_response_model.dart';
-import 'package:alp_app/pages/spacex/model/spacex_model.dart';
+import '../../../core/model/base_response_model.dart';
+import 'spacex_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'spacex_response_model.g.dart';
