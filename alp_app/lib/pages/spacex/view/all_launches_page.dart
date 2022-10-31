@@ -33,16 +33,20 @@ class AllLaunchesPage extends StatelessWidget {
               },
               child: PageView.builder(
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: context.paddingMediumAll,
-                    child: Column(
-                      children: [
-                        _title((index + 1).toString()),
-                        _rocketName(allLaunches[index]),
-                        _rocketImage(context, allLaunches[index]),
-                        _detailInfo(allLaunches[index], context),
-                      ],
-                    ),
+                  return ListView(
+                    children: [
+                      Padding(
+                        padding: context.paddingMediumAll,
+                        child: Column(
+                          children: [
+                            _title((index + 1).toString()),
+                            _rocketName(allLaunches[index]),
+                            _rocketImage(context, allLaunches[index]),
+                            _detailInfo(allLaunches[index], context),
+                          ],
+                        ),
+                      )
+                    ],
                   );
                 },
               ),
