@@ -25,10 +25,7 @@ class SpacexViewModel {
   Future<void> refreshLaunches(BuildContext context) async {
     fetchLaunchingInfo(context);
     context.read<SpacexBloc>().add(const SpacexPageRefresh());
-    //a++;
-    //fetchLaunchingInfo(context);
   }
 
-  var a = 0;
   SpacexModel get lastLaunch => launching.last;
 }

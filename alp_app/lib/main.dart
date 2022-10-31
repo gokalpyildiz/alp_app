@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => SpacexBloc(),
           )
-        ], child: HomeBasePage(pageIndex: 0)));
+        ], child: HomeBasePage()));
   }
 }
