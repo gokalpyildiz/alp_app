@@ -11,6 +11,7 @@ import '../bloc/spacex_state.dart';
 import '../model/spacex_model.dart';
 import '../viewmodel/spacex_viewmodel.dart';
 
+// ignore: must_be_immutable
 class AllLaunchesPage extends StatelessWidget {
   AllLaunchesPage({Key? key}) : super(key: key);
   var spacexViewModel = SpacexViewModel();
