@@ -33,15 +33,6 @@ class _SpacexPageState extends State<SpacexPage> {
       create: (context) => SpacexBloc(),
       child: Scaffold(
         backgroundColor: Colors.white,
-        // appBar: AppBar(
-        //     centerTitle: true,
-        //     title: const NationText(
-        //       'SpaceX Son Uçuş Bilgileri',
-        //       color: Colors.black,
-        //       fontSize: 25,
-        //     ),
-        //     backgroundColor: Colors.white,
-        //     elevation: 0),
         body: SafeArea(
             child: BlocConsumer<SpacexBloc, SpacexState>(
           listener: (context, state) {},
